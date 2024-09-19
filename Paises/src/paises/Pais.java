@@ -20,7 +20,7 @@ public class Pais {
 	/** Bizi Esperantza. */
 	static int BiziEsperantza[] = { 78		 				  ,0						,67						   ,52			 			 ,68					  ,70		  			   ,0						 ,68					   ,78		 				,66    };
 
-	/** EstatuaSortutakoData. */
+	/** Estatua Sortutako Data. */
 	static LocalDate DataSortu[] = { LocalDate.of(1581, 7, 26),LocalDate.of(1993, 3, 14),LocalDate.of(1923, 10, 29),LocalDate.of(1960, 6, 26),LocalDate.of(1962, 1, 1),LocalDate.of(1962, 7, 5),LocalDate.of(1993, 5, 24),LocalDate.of(1825, 8, 25),LocalDate.of(1830, 2, 3),LocalDate.of(1958, 7, 14) };
 
 	/** Poblazioa. */
@@ -34,13 +34,13 @@ public class Pais {
 	/**
 	 * The main method.
 	 *
-	 * @param args the arguments
+	 * @param args, argumentuak
 	 */
 	public static void main(String[] args) {
 		try {
 			menua();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -57,7 +57,7 @@ public class Pais {
 		boolean ondosartuta = false;
 		int aukera = 0;
 		do {
-			ondosartuta = false;  // Reiniciar la variable para el siguiente bucle
+			ondosartuta = false;  //Buklea berrarazi galdetzen segitzeko
 
 			System.out.println("Aukeratu hurrengo ataletako bat :");
 			System.out.println("--------------------------------------------------------------------");
@@ -71,6 +71,7 @@ public class Pais {
 			System.out.println("8.- Ikusi zein erregistrok duen Izen Luzeena 			   |");
 			System.out.println("9.- Irten 							   |");
 
+			//Zenbakia ondo sartuta ez badago buklean sartuko da
 			while (!ondosartuta) {
 				System.out.print("Zuk aukeratutakoa: ");
 				if (sc.hasNextInt()) {
@@ -83,6 +84,7 @@ public class Pais {
 
 						case 1: {
 							System.out.println("Erregistro guztiak erakutsi aukeratu duzu");
+							
 							for (int i = 0; i < Kodea.length; i++) {
 								System.out.println("Kodea: " + Kodea[i]);
 								System.out.println("Estatua: " + Estatua[i]);
@@ -109,10 +111,12 @@ public class Pais {
 
 								if (telefonokodeString.matches("\\d+")) {
 									if (KodeaExistitzenDaArrayean(Kodea, telefonokodeString)) {
+										
 										aukeratutakoKodea = Integer.parseInt(telefonokodeString);
 										int index = LortuArrayekoPosizioaKode(Kodea, telefonokodeString);
 										ErakutsierregistroKode(index);
 										Ondosartutakode = true;
+										
 									} else {
 										System.out.println("Error: Kodea ez dago zerrendan.");
 									}
@@ -131,6 +135,7 @@ public class Pais {
 							System.out.println("Erregistro guztietako Bizi Esperantzaren batazbestekoa ikustea aukeratu duzu");
 							double media = kalkulatuBiziEsperantzaMedia();
 							System.out.println("Erregistroen Bizi Esperantzaren bataz Bestekoa : " + media + " urtekoa da");
+							
 							break;
 						}
 
@@ -138,6 +143,7 @@ public class Pais {
 							System.out.println("Erregistro guztietako Poblazioaren batazbestekoa ikustea aukeratu duzu");
 							double mediapoblazio = kalkulatuPoblazioMedia();
 							System.out.println("Erregistroen Poblazioaren bataz Bestekoa : " + mediapoblazio + " pertsona da");
+							
 							break;
 						}
 
@@ -145,6 +151,7 @@ public class Pais {
 							System.out.println("Erregistro guztietako Bizi Esperantza Handiena Ikustea aukeratu duzu");
 							int IndexBiziEsperantzaHandiena = LortuBiziEsperantzahandiena();
 							ErakutsierregistroKode(IndexBiziEsperantzaHandiena);
+							
 							break;
 						}
 
@@ -152,6 +159,7 @@ public class Pais {
 							System.out.println("Erregistro guztietako Poblazio Handiena duen erregistroa Ikustea aukeratu duzu");
 							int IndexPoblazioHandiena = LortuPoblaziohandiena();
 							ErakutsierregistroKode(IndexPoblazioHandiena);
+							
 							break;
 						}
 
@@ -159,6 +167,7 @@ public class Pais {
 							System.out.println("Erregistro guztietako Estatu zaharrena ikustea aukeratu duzu");
 							int IndexEstatuZaharrena = LortuDataZaharrena();
 							ErakutsierregistroKode(IndexEstatuZaharrena);
+							
 							break;
 						}
 
@@ -166,6 +175,7 @@ public class Pais {
 							System.out.println("Erregistro guztietako Estatua izen luzeena aukeratu duzu");
 							int IndexIzenLuzeena = LortuizenLuzeena();
 							ErakutsierregistroKode(IndexIzenLuzeena);
+							
 							break;
 						}
 
@@ -176,6 +186,7 @@ public class Pais {
 						default:
 							System.out.println("Aukera desegokia.");
 						}
+						
 					} else {
 						System.out.println("Errorea: Sartu baliozko aukera bat (1-9).");
 					}
@@ -190,9 +201,9 @@ public class Pais {
 	}
 
 	/**
-	 * Kodea existitzen da  arrayean metodoa.kodea benetan existitzen den konprobatzen du
+	 * Kodea existitzen da  arrayean metodoa.Kodea benetan existitzen den konprobatzen du
 	 *
-	 * @param array the array
+	 * @param array , gure erregistroak
 	 * @param value , erabiltzaileak sartutako balioa
 	 * @return true, Kodea erregistroan badago
 	 */
@@ -222,9 +233,9 @@ public class Pais {
 	}
 
 	/**
-	 * Erakutsierregistro kode.
+	 * Erakutsi erregistro kode metodoa.
 	 *
-	 * @param index the index
+	 * @param index , erregistroko posizioaren bidez erregistroa erakusten du
 	 */
 	public static void ErakutsierregistroKode(int index) {
 		System.out.println("Kodea " + Kodea[index] + ":");
@@ -238,7 +249,7 @@ public class Pais {
 	/**
 	 * Kalkulatu bizi esperantza media.
 	 *
-	 * @return double, erregistro guztien bizi esperantzaren batazbestekoa
+	 * @return double, erregistro guztien bizi esperantzaren batazbestekoa kalkulatzen du
 	 */
 	public static double kalkulatuBiziEsperantzaMedia() {
 		int batura = 0;
@@ -263,7 +274,7 @@ public class Pais {
 	/**
 	 * Kalkulatu poblazio media.
 	 *
-	 * @return  double, erregistro guztien poblazioaren batazbestekoa
+	 * @return  double, erregistro guztien poblazioaren batazbestekoa kalkulatzen du
 	 */
 	public static double kalkulatuPoblazioMedia() {
 		int batura2 = 0;
@@ -286,7 +297,7 @@ public class Pais {
 	}
 
 	/**
-	 * Lortu bizi esperantzahandiena.
+	 * Lortu bizi esperantza handiena duen Estatu metodoa.
 	 *
 	 * @return  int, esperantza handiena duen erregitroaren posizioa
 	 */
@@ -301,7 +312,7 @@ public class Pais {
 	}
 
 	/**
-	 * Lortu poblaziohandiena.
+	 * Lortu poblazio handiena metodoa.
 	 *
 	 * @return  int, poblazio handiena duen erregistroaren posizioa
 	 */
@@ -316,7 +327,7 @@ public class Pais {
 	}
 
 	/**
-	 * Lortu data zaharrena.
+	 * Lortu data zaharrena metodoa.
 	 *
 	 * @return  int, data zaharrena duen erregistroaren posizioa
 	 */
@@ -331,9 +342,9 @@ public class Pais {
 	}
 
 	/**
-	 * Lortuizen luzeena.
+	 * Lortu izen luzeena metodoa.
 	 *
-	 * @return int, gure erregistroko izen luzeenaren posizioa
+	 * @return int, gure erregistroko izen luzeenaren posizioa itzulten du
 	 */
 	public static int LortuizenLuzeena() {
 		int IndexIzenluzeena = 0;
